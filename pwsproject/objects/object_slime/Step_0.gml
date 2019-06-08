@@ -1,17 +1,26 @@
-npc_right= place_meeting(x+1,y,object1)  
-npc_left= place_meeting(x-1,y,object1)
 
+//Omdraaien
+if npcdirection = -1 and (place_meeting(x-5,y,object1)) and alarm[0] <= 0
+	{
+	alarm[0] = 30
+	}
+
+if npcdirection = 1 and (place_meeting(x+5,y,object1)) and alarm[1] <= 0
+	{
+	alarm[1] = 30
+	}
+	
 // Movement 
+hsp = npcdirection * walksp;
 
-move= npc_right-npc_left;
-
-hsp = move * walksp;
 vsp= vsp+grv;
 
-if (place_meeting(x,y+1,object1)) and((place_meeting(x+5,y,object1)) or (place_meeting(x-5,y,object1)))
+if (place_meeting(x,y+1,object1)) and((place_meeting(x+10,y,object1)) or (place_meeting(x-10,y,object1)))
 {
-	vsp=-7;
+	vsp=-5;
 }
+
+
 //Horizontal Collision
 if (place_meeting(x+hsp,y,object1)) 
 {
